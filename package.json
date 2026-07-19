@@ -1,0 +1,42 @@
+{
+  "name": "chronica-ai-video-pipeline",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Chronica AI media pipeline with structured validation, bounded repair, TTS, Remotion rendering and artifact recovery",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "pipeline": "node --import tsx src/cli.ts",
+    "pipeline:no-render": "node --import tsx src/cli.ts --skip-render",
+    "pipeline:ci-render": "RUN_ID=ci-render PIPELINE_TOPIC='Короткий тест воспроизводимого рендера' node --import tsx src/cli.ts",
+    "eval": "node --import tsx src/evaluation/runEvaluation.ts",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "test:coverage": "node --experimental-test-coverage --test-coverage-lines=90 --test-coverage-functions=90 --test-coverage-branches=80 --import tsx --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src tests",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test:coverage"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.490",
+    "@remotion/renderer": "4.0.490",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.490",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.2",
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "eslint": "9.39.2",
+    "prettier": "3.8.1",
+    "tsx": "4.22.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.52.0"
+  }
+}
