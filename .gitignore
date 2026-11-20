@@ -1,0 +1,13 @@
+node_modules/
+artifacts/
+public/generated/*
+!public/generated/.gitkeep
+.env
+.env.*
+!.env.example
+coverage/
+.DS_Store
+*.log
+*.mp4
+*.wav
+*.tsbuildinfo
